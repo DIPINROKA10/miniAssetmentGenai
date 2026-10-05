@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>GitHub Repo Explainer — Local GenAI Mini Project</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Segoe UI', Arial, sans-serif; background: #0f172a; color: #e2e8f0; line-height: 1.6; }
+  .wrap { max-width: 860px; margin: 0 auto; padding: 40px 20px 80px; }
+  header { text-align: center; padding: 40px 0 24px; }
+  header h1 { font-size: 2.2rem; margin-bottom: 8px; }
+  header p { color: #94a3b8; font-size: 1.05rem; }
+  .badge { display: inline-block; background: #1e293b; border: 1px solid #334155; color: #7dd3fc; border-radius: 999px; padding: 4px 14px; font-size: .85rem; margin: 4px; }
+  section { background: #1e293b; border: 1px solid #334155; border-radius: 12px; padding: 24px; margin-top: 20px; }
+  h2 { font-size: 1.25rem; margin-bottom: 12px; color: #f8fafc; }
+  p, li { color: #cbd5e1; }
+  ul, ol { margin-left: 20px; margin-top: 8px; }
+  li { margin-bottom: 6px; }
+  code { background: #0f172a; border: 1px solid #334155; border-radius: 6px; padding: 2px 8px; font-size: .9rem; color: #7dd3fc; }
+  pre { background: #0f172a; border: 1px solid #334155; border-radius: 8px; padding: 16px; overflow-x: auto; margin-top: 10px; font-size: .88rem; color: #a5f3fc; }
+  .flow { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; align-items: center; }
+  .flow span { background: #0f172a; border: 1px solid #38bdf8; color: #bae6fd; border-radius: 8px; padding: 6px 12px; font-size: .88rem; }
+  .flow b { color: #38bdf8; }
+  .example { background: #0f172a; border-left: 4px solid #38bdf8; border-radius: 0 8px 8px 0; padding: 16px; margin-top: 10px; }
+  footer { text-align: center; color: #64748b; margin-top: 32px; font-size: .9rem; }
+  a { color: #38bdf8; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <h1>📦 GitHub Repo Explainer</h1>
+    <p>Local GenAI mini project — paste a GitHub URL, get a simple-language explanation of the codebase.</p>
+    <div style="margin-top:12px">
+      <span class="badge">Python</span>
+      <span class="badge">FastAPI</span>
+      <span class="badge">Streamlit</span>
+      <span class="badge">Hugging Face</span>
+      <span class="badge">Local LLM</span>
+    </div>
+  </header>
+
+  <section>
+    <h2>❓ What it does</h2>
+    <p>Enter <code>https://github.com/username/repository</code>. The app clones the repo locally, extracts source files, sends the code to a locally running LLM, and shows a beginner-friendly explanation.</p>
+    <div class="flow">
+      <span>GitHub URL</span><b>→</b><span>Clone (GitPython)</span><b>→</b><span>Extract code</span><b>→</b><span>Local LLM</span><b>→</b><span>FastAPI</span><b>→</b><span>Streamlit UI</span>
+    </div>
+  </section>
+
+  <section>
+    <h2>▶️ How to run (local demo)</h2>
+    <ol>
+      <li>Install deps: <code>pip install -r requirements.txt</code></li>
+      <li>Terminal 1 — backend: <code>cd backend</code> then <code>python -m uvicorn main:app --host 127.0.0.1 --port 8000</code></li>
+      <li>Terminal 2 — frontend: <code>python -m streamlit run frontend/app.py</code></li>
+      <li>Open <code>http://localhost:8501</code>, paste a repo URL, click Explain.</li>
+    </ol>
+    <p style="margin-top:8px">First explanation takes 30–90s (model loads on CPU). Tested with <code>pypa/sampleproject</code> and <code>DIPINROKA10/Gen_AI_W</code>.</p>
+  </section>
+
+  <section>
+    <h2>💡 Example output</h2>
+    <div class="example">
+      <p><b>Project Overview</b><br/>This project (Gen_AI_W) is a Generative AI experiment lab. It teaches models to create new content such as images.</p>
+      <p style="margin-top:8px"><b>The application allows users to:</b><br/>
+      - Run neural style transfer experiments<br/>
+      - Train/test GAN-style image generation (e.g. CycleGAN)<br/>
+      - Experiment with diffusion models<br/>
+      - Explore transformers and attention</p>
+      <p style="margin-top:8px"><b>Main Technologies:</b><br/>- Python</p>
+      <p style="margin-top:8px"><b>How it works:</b><br/>User opens the scripts → scripts load data and define the model → code runs locally in Python → results are produced from the learned model.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>🔗 Links</h2>
+    <ul>
+      <li>Source code: included in project submission (<code>backend/</code> FastAPI + <code>frontend/</code> Streamlit)</li>
+      <li>Demo video: <i>add your recording link here</i></li>
+      <li>Model: Hugging Face <code>gpt2</code> (local, CPU) — upgrade path: Ollama <code>qwen2.5:3b</code></li>
+    </ul>
+  </section>
+
+  <footer>Built by dipinroka · GenAI mini project · Static showcase — the live app runs locally (see steps above).</footer>
+
+</div>
+</body>
+</html>
